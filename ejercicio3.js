@@ -39,12 +39,12 @@ function init() {
     scene.add(axes);
    
     Cubo = []; //define un array unidimensional
-    dim = 20; //valor inicial de las dimensiones de los cubos
-    angulo = Math.PI/4; //valor del angulo de giro
+    dim = prompt("Tamaño del cubo:"); //valor inicial de las dimensiones de los cubos
+    angulo =  prompt("Valor del ángulo."); //valor del angulo de giro
     del = dim/2; //valor de la mitad de la dimensión del cubo
     dia = Math.sqrt(Math.pow(del, 2)+Math.pow(del, 2));//variable para hallar la diagonal del área de la cara del cubo
     ndel = (Math.cos((Math.PI/4)-angulo))*dia;//transalación según la dimensión y angulo de  giro del cubo
-    n=(dim*33)/100;
+    n=(dim*50)/100;
 
     Cubo.push(cubo(dim, dim, dim, 0xFF0000, 'Physical', false));
     Cubo.push(cubo(dim, dim, dim, 0xFFDD00, 'Physical', false));
@@ -70,9 +70,6 @@ function init() {
         }
     }
 
-    Cubo[1].translateY(dim/6);
-    Cubo[2].translateY(dim/4);
-
     light = new THREE.PointLight(0xFFFFFF);
     light2 = new THREE.PointLight(0xFFFFFF);
                                         
@@ -81,7 +78,7 @@ function init() {
     scene.add( light );
     scene.add( light2 ); 
 
-    camera.position.set(-dim*n, dim, dim);
+    camera.position.set(-dim*n, dim, dim);//cambio de la cámara según el tamaño del cubo 
     camera.lookAt(scene.position);
 
     document.getElementById("webgl-output").appendChild(renderer.domElement);
